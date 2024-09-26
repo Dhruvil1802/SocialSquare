@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+<style>
+        .form-container {
+            display: flex;
+            justify-content: flex-start;;
+        }
+        input[type=submit] {
+                     width: 16%;
+                     font-size: 14px;
+                     background-color: rgb(46, 101, 108); 
+                      border: none;
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      }
+            input[type=submit]:hover {
+                         background-color:  rgb(104, 139, 151);
+            }
+            #nav{
+                background-color: rgb(46, 101, 108);
+            }
+
+          
+            #profile_data{
+                        height: 400px;
+                        width: 400px;
+                        
+            }
+            #connection{
+                        margin-left: 0px;
+                        width:730px;
+                       
+            }
+            .child {
+                    display: inline-block;
+                    
+                    padding: 1rem 1rem;
+                    vertical-align:text-top; 
+                }
+            #transparent_button:hover {
+                         background-color:rgb(225, 233, 236);
+                         font-size: 19px;
+            }
+            #transparent_button {
+                     width: 100%;
+                     font-size: 18px;
+                     font-weight: bold;
+                     background-color: rgb(225, 233, 236); 
+                      border: none;
+                      color: rgb(0, 0, 0);
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                     
+                      }
+        
+
+        #profile_pic {
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                    align-content: center;
+                    
+                    }
+
+        #profile_pic:hover {opacity: 0.7;}
+
+        #ru_button:hover {
+                         background-color: rgb(104, 139, 151);
+                          }
+        #ru_button {
+                     width: 60%;
+                     font-size: 14px;
+                     background-color:rgb(46, 101, 108); 
+                      border: none; 
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin-left: 120px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      border-radius: 20px;
+                      }
+        #ad_button:hover {
+                         background-color: rgb(104, 139, 151);
+                          }
+        #ad_button {
+                     width: 46%;
+                     font-size: 14px;
+                     background-color:rgb(46, 101, 108); 
+                      border: none; 
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      border-radius: 20px;
+                      }
+        #username_textbox{
+                background-color: rgb(225, 233, 236); 
+                border:none; 
+                border-bottom: 3px solid  rgb(46, 101, 108) ;
+                transition: width 1s ease-in-out;
+                margin-left: 118px;
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #username_textbox:hover{
+            border-bottom: 4px solid rgb(132, 173, 179);
+        }
+        #username_textbox:focus{
+            outline: none;
+            border-bottom: 4px solid rgb(132, 173, 179);
+            
+        }
+        #bio_textarea{
+            width: 90%;
+                background-color: rgb(225, 233, 236); 
+                border:none; 
+                border-bottom: 3px solid  rgb(46, 101, 108) ;
+                transition: width 1s ease-in-out;
+                margin-left: 118px;
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 14px;
+                transition: width 0.4s ease-in-out;
+        }
+        #bio_textarea:hover{
+            width: 90%;
+            border-bottom: 4px solid rgb(132, 173, 179);
+            font-size: 14px;
+        }
+        #bio_textarea:focus{
+            width: 90%;
+            outline: none;
+            border-bottom: 4px solid rgb(132, 173, 179);
+            font-size: 14px;
+            
+        }
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 1000px;
+}
+
+/* Caption of Modal Image */
+#bio {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #161515;
+  padding: 10px 0;
+  height: 150px;
+  white-space: pre-wrap;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+#post_pic{ 
+
+    margin-top: 50px;
+    margin-bottom: 90px ;
+    margin-left: 90px;
+    height:300px; 
+    width:300px;
+    display: inline-block
+}
+#post:hover{
+  height:321px ;
+  width:321px;
+  opacity: 0.7;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav input[type=submit] {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  background-color: transparent;
+  text-align: left;
+  width:100%;
+}
+
+.sidenav input[type=submit]:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:#818181
+}
+
+.sidenav .closebtn:hover {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:white
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+</style>
+  </head>
+  <body style="background-color: rgb(225, 233, 236)">
+
+    <div id = "nav">
+      <div class="form-container">
+        <form action="../../Posts/homepage/" method="get" style="width:80%;">
+          {% csrf_token %}
+          {% if currentpage == "homepage" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="HOME" formaction="../../Posts/homepage/">
+          {% else %}
+                <input type ="submit" value="HOME" formaction="../../Posts/homepage/">
+          {% endif %}
+          {% if currentpage == "showuserprofile" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+          {% else %}
+                <input type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+          {% endif %}
+          {% if currentpage == "createpost" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="POST" formaction="../../Posts/createpost/">
+          {% else %}
+                <input type ="submit" value="POST" formaction="../../Posts/createpost/">
+          {% endif %}
+          {% if currentpage == "suggestions" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+          {% else %}
+                <input type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+          {% endif %}
+          {% if currentpage == "pendingrequests" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+          {% else %}
+                <input type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+          {% endif %}
+          {% if currentpage == "notifications" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+          {% else %}
+                <input type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+          {% endif %}
+        </form>            
+          
+        <span style="font-size:25px;cursor:pointer;color:white; margin-top:9px; margin-left:250px;" onclick="openNav()">&#9776;</span>
+      </div>
+  </div>
+  
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<form action="../../Connections/blockeduser/" method="get">
+
+  {% csrf_token %} 
+  <input type="submit" value="EDIT PROFILE" formaction="../../UserProfile/updateprofile/" formmethod="get">
+  <input type ="submit" value="BLOCKED USERS" formaction="../../Connections/blockeduser/" formmethod="get">
+  <input type="submit" value="USER INSIGHTS" formaction="../../UserProfile/userinsights/" formmethod="get">
+  <input type="submit" value="RESET PASSWORD" formaction="../../Registration/resetpassword/" formmethod="get">
+  <input type ="submit" value="LOGOUT" formaction="../../Registration/logout/" formmethod="get">
+
+</form>
+</div>
+
+
+
+
+
+
+    <form action='../../UserProfile/postprofiledata/' method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+      <input type="hidden" name="user" value="{{user.user_id}}">
+      <div style= " background-color: rgb(225, 233, 236); height:550px">
+          <div style="margin-left: 150px; margin-top: 50px;" id="profile_data" class="child" >
+
+              <!-- <img id="profile_pic" src="" height="300px" width="300px" alt="profile_pic" style="border-radius: 150px; margin-left: 50px;" onclick="fun1(this)"/><br><br>
+              <b style="margin-left: 120px;">choose new profile pic</b><br>
+              <input style="margin-left: 100px" type="file"  name="file_input" onchange="loadImageFromFileInput()"><br><br><br> -->
+              
+
+              
+              {% if user.profile_pic %}
+              <img id="profile_pic" src="../../Media/{{user.profile_pic}}" height="300px" width="300px" alt="profile_pic" style="border-radius: 150px; margin-left: 50px;" onclick="fun1(this)"/>
+              {% else %}
+              <img id="profile_pic" src="../../Media/Images/ProfilePic/Screenshot 2024-02-29 033331.png" height="300px" width="300px" alt="profile_pic" style="border-radius: 150px; margin-left: 50px;" onclick="fun1(this)"/>
+              {% endif %}
+              <b style="margin-left: 120px;">choose new profile pic</b><br><br>
+              <input type="file" id="file_input"  name="profile_pic" style="margin-left: 100px" onchange="loadImageFromFileInput()"><br><br><br><br>
+              
+
+              <b style="margin-left: 160px;">Username</b><br>
+              <input style="margin-top: 10px;" type = 'text' name = 'username' id="username_textbox" value="{{user.username}}"><br><br>
+          </div>
+          <div id="myModal" class="modal">
+              <span class="close">&times;</span>  
+              <img class="modal-content" id="img01">
+              <div id="caption"></div>
+          </div>
+
+          
+          <div id="connection" class="child" style="margin-top: 50px;">
+                  <div class="child" style="text-align: center; margin-left: 150px;">
+                      <input id="transparent_button" type="submit" value="{{user.follower_count}}" formaction="../../Connections/getfollowers/" formmethod="get"><br>
+                      <input id="transparent_button" type="submit" value="Followers" formaction="../../Connections/getfollowers/" formmethod="get">
+                  </div>
+                  <div class="child" style="text-align: center;">
+                      <input id="transparent_button" type="submit" value="{{user.following_count}}" formaction="../../Connections/getfollowing/" formmethod="get"> <br>
+                      <input id="transparent_button" type="submit" value="Following" formaction="../../Connections/getfollowing/" formmethod="get"> 
+                  </div>
+                  <div id="bio" style=" width:480px; margin-left:0px;">
+                        <b style="margin-left:100px;">Bio</b><br><br><input id="bio_textarea" type="textarea" value="{{user.bio}}" name="bio">
+                  </div>
+                  <div style=" margin-left: 280px;">
+                    <b style=" margin-left: 20px;">Account type</b><br><br>
+                    <b>Public</b> <input type="radio" name="account_type" value="public">
+                    <b>Private</b> <input type="radio"name="account_type" value="private"><br>
+                  </div>
+          </div>
+      </div >
+      <div style=" text-align: center">
+      <input style="width:10%; text-align: center; border-radius: 10px;" type="submit" value="update"> 
+      </div>
+    </form>
+    
+
+    <script>
+
+        var modal = document.getElementById("myModal");
+        
+        function fun1(t)
+        {
+            
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            t.onclick = function()
+            {
+                console.log('t one');
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+        }	
+      
+        var span = document.getElementsByClassName("close")[0];
+
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
+
+        
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+          }
+
+          function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+          }
+
+          
+          function loadImageFromFileInput() {
+            var fileInput = document.getElementById('file_input');
+            var file = fileInput.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('profile_pic').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function loadImageFromURL() {
+            alert('Please select an image file using the file input.');
+        }
+
+        let visibletime;
+let hiddentime;
+let activeTime = 0;
+
+// Initialize visibletime when the page loads
+window.onload = function() {
+  let currentTimeMillis = Date.now();
+  visibletime = new Date(currentTimeMillis);
+  console.log("Initial Visible Time:", visibletime);
+};
+
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible') {
+    let currentTimeMillis = Date.now();
+    visibletime = new Date(currentTimeMillis);
+    console.log("Visible Time:", visibletime);
+
+    // Resume refresh or perform other actions when visible
+  } else if (document.visibilityState === 'hidden') {
+    let currentTimeMillis = Date.now();
+    hiddentime = new Date(currentTimeMillis);
+    console.log("Hidden Time:", hiddentime);
+
+    if (visibletime) {
+      let activeTime = hiddentime - visibletime;
+   
+      sendActiveTimeToServer(activeTime);
+      console.log("Active Time:", activeTime);
+    }
+
+
+  }
+});
+
+function sendActiveTimeToServer(activeTime) {
+  var ajax = new XMLHttpRequest();
+  ajax.open("POST", "{% url 'save_active_time' %}", true);
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  ajax.setRequestHeader("X-CSRFToken", getCookie('csrftoken')); // Include the CSRF token in the request headers
+  ajax.onreadystatechange = function() {
+    if (ajax.readyState === 4) {
+      if (ajax.status === 200) {
+        var response = JSON.parse(ajax.responseText);
+        if (response.success) {
+          console.log("Active time sent successfully.");
+        } else {
+          console.error("Error sending active time:", response.error);
+        }
+      } else {
+        console.error('Error sending active time:', ajax.statusText);
+      }
+    }
+  };
+  ajax.send("activeTime=" + activeTime);
+}
+
+// Function to get CSRF token from cookie
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+        </script>
+  </body> 
+
+</html>

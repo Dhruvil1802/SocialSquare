@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<style>
+
+        .form-container {
+            display: flex;
+            justify-content: flex-start;;
+        }
+        input[type=submit] {
+                     width: 16%;
+                     font-size: 14px;
+                     background-color: rgb(46, 101, 108); 
+                      border: none;
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                     
+                     
+                      }
+            input[type=submit]:hover {
+                         background-color:  rgb(104, 139, 151);
+            }
+            #nav{
+                background-color: rgb(46, 101, 108);
+            }
+            .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav input[type=submit] {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  background-color: transparent;
+  text-align: left;
+  width:100%;
+}
+
+.sidenav input[type=submit]:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:#818181
+}
+
+.sidenav .closebtn:hover {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:white
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.heart-button {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  content: "\2665";
+}
+.heart-button::before {
+  content: '\2665'; /* Unicode character for heart symbol */
+}
+#profile_button:hover {
+                         background-color:white;
+                         font-size: 19px;
+                         text-decoration: underline;
+            }
+            #profile_button {
+                      width:auto;
+                      font-size: 18px;
+                      background-color: rgb(255, 255, 255); 
+                      border:none;
+                      color: rgb(0, 0, 0);
+                      padding: 16px 32px;
+                      text-decoration: none;
+                      
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      }
+                      #accept_button:hover {
+                         background-color:rgb(46, 101, 108);
+            }
+            #accept_button {
+                     width: 20%;
+                     font-size: 14px;
+                     background-color: rgb(133, 173, 185); 
+                      border: none;
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      border-radius: 20px;
+                     
+                      }
+
+
+                      .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 1000px;
+}
+
+/* Caption of Modal Image */
+#bio {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #161515;
+  padding: 10px 0;
+  height: 150px;
+  white-space: pre-wrap;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#username_textbox{
+                 
+                border:none; 
+                border: 3px solid  rgb(46, 101, 108) ;
+                border-radius: 10px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+</style>
+  </head>
+  <body style="background-color: rgb(225, 233, 236)">
+
+    <div id = "nav">
+        <div class="form-container">
+          <form action="../../Posts/homepage/" method="get" style="width:80%;">
+            {% csrf_token %}
+            {% if currentpage == "homepage" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="HOME" formaction="../../Posts/homepage/">
+            {% else %}
+                  <input type ="submit" value="HOME" formaction="../../Posts/homepage/">
+            {% endif %}
+            {% if currentpage == "showuserprofile" %}  
+                    <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+            {% else %}
+                  <input type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+            {% endif %}
+            {% if currentpage == "createpost" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="POST" formaction="../../Posts/createpost/">
+            {% else %}
+                  <input type ="submit" value="POST" formaction="../../Posts/createpost/">
+            {% endif %}
+            {% if currentpage == "suggestions" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+            {% else %}
+                  <input type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+            {% endif %}
+            {% if currentpage == "pendingrequests" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+            {% else %}
+                  <input type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+            {% endif %}
+            {% if currentpage == "notifications" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+            {% else %}
+                  <input type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+            {% endif %}
+          </form>            
+            
+          <span style="font-size:25px;cursor:pointer;color:white; margin-top:9px; margin-left:250px;" onclick="openNav()">&#9776;</span>
+        </div>
+    </div>
+    
+  <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
+  <form action="../../Connections/blockeduser/" method="get">
+  
+    {% csrf_token %} 
+  <input type="submit" value="EDIT PROFILE" formaction="../../UserProfile/updateprofile/" formmethod="get">
+  <input type ="submit" value="BLOCKED USERS" formaction="../../Connections/blockeduser/" formmethod="get">
+  <input type="submit" value="USER INSIGHTS" formaction="../../UserProfile/userinsights/" formmethod="get">
+  <input type="submit" value="RESET PASSWORD" formaction="../../Registration/resetpassword/" formmethod="get">
+  <input type ="submit" value="LOGOUT" formaction="../../Registration/logout/" formmethod="get">
+  
+  </form>
+  </div>
+
+
+<div style="width: 100%; text-align: center;">
+    <form action="../../UserProfile/userinsights/" method="get" style="margin-top: 20px;">
+        {% csrf_token %}
+        Enter time range<br><br>
+        <input type='date' name='start_time'><br>
+        to<br>
+        <input type='date' name='end_time'><br><br>
+        Time Spent<input type="radio" id="time_spent" name="user_activity_option" value="time_spent">
+        Connection analytics<input type="radio" id="connection_analytics" name="user_activity_option" value="connection_analytics">
+        Post analytics<input type="radio" id="post_analytics" name="user_activity_option" value="post_analytics"><br><br>
+        <input type="submit" value="submit" id="accept_button">
+
+        <input type="hidden" value="{{user_activity_per_day}}" id="user_activity_per_day" name="user_activity_per_day">
+        <input type="hidden" value="{{user_activity_on_day}}" id="user_activity_on_day" name="user_activity_on_day">
+        <input type="hidden" value="{{unit}}" id="unit">
+
+        <input type="hidden" value="{{follower_count_on_day}}" id="follower_count_on_day" name="follower_count_on_day">
+        <input type="hidden" value="{{follower_count}}" id="follower_count" name="follower_count">
+        
+        <input type="hidden" value="{{post_list}}" id="post_list" name="post_list">
+        <input type="hidden" value="{{likes_list}}" id="likes_list" name="likes_list">
+        <input type="hidden" value="{{comments_list}}" id="comments_list" name="comments_list">
+
+    </form><br><br>
+
+    {% if user_activity_per_day|length > 1 %}
+    <div  style="border: 1px solid black; width: 45%;height: 370px; display: inline-block; vertical-align: top;">
+        <div style="text-align: center;">
+
+            <canvas id="timeSpentChart" style="max-width: 100%;margin-top: 20px"></canvas>
+
+        </div>
+    </div>
+    {% endif %}
+    {% if follower_count_on_day|length > 1  %}
+    <div  style="border: 1px solid black; width: 45%; height:370px; display: inline-block; vertical-align: top; ">
+        <div style="text-align: center;">
+    
+            <canvas id="connectionAnalyticsChart" style="max-width: 100%; margin-top: 20px;"></canvas>
+        
+        </div>
+    </div>
+    {% endif %}
+    {% if post_list|length > 1  %}
+    <div  style="border: 1px solid black; width: 90%; height:370px; display: flex; vertical-align: top; margin-left:70px ">
+        <div style="text-align: center; display: flex; width:40%; margin-left: 75px;">
+    
+            <canvas id="postAnalyticsLikeChart" style="max-width: 100%; margin-top: 20px; display: inline-block;"></canvas>
+            
+        </div>
+        <div style="text-align: center; display: flex; width:40%; margin-left: 100px;">
+    
+            
+            <canvas id="postAnalyticsCommentsChart" style="max-width: 100%; margin-top: 20px; display: inline-block;"></canvas>
+        </div>
+    </div>
+    {% endif %}
+   
+</div>
+
+<script>
+
+
+
+let days_str = document.getElementById('user_activity_on_day').value;
+let days_arr = days_str.split(','); 
+let days_int = days_arr.map(str => parseInt(str));
+days_int.splice(0, 1);
+console.log(days_int)
+
+let user_activity_per_day_str = document.getElementById('user_activity_per_day').value;
+let user_activity_per_day_arr = user_activity_per_day_str.split(','); 
+let user_activity_per_day_int = user_activity_per_day_arr.map(str => parseInt(str));
+user_activity_per_day_int.splice(0, 1);
+console.log(user_activity_per_day_int)
+
+console.log("typeof days",typeof days_int);
+console.log("typeof user_activity_per_day",typeof user_activity_per_day_int)
+new Chart("timeSpentChart", {
+  type: "bar",
+  data: {
+    labels: days_int,
+    datasets: [{
+      backgroundColor: "rgb(133, 173, 185)",
+      data: user_activity_per_day_int
+    }]
+  },
+  options: {
+    legend: { display: false },
+    title: {
+      display: true,
+      text: "Total Social Square Usage in minutes"
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Days"
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: "minutes"
+        }
+      }
+    }
+  }
+});
+    
+
+let follower_count_on_day_str = document.getElementById('follower_count_on_day').value;
+let follower_count_on_day_arr = follower_count_on_day_str.split(','); 
+let follower_count_on_day_int = follower_count_on_day_arr.map(str => parseInt(str));
+follower_count_on_day_int.splice(0, 1);
+console.log(typeof follower_count_on_day_int)
+
+let follower_count_str = document.getElementById('follower_count').value;
+let follower_count_arr = follower_count_str.split(','); 
+let follower_count_int = follower_count_arr.map(str => parseInt(str));
+follower_count_int.splice(0, 1);
+let minNumber = Math.min(...follower_count_int);
+let maxNumber = Math.max(...follower_count_int);
+console.log(typeof follower_count_int)
+
+new Chart("connectionAnalyticsChart", {
+  type: "line",
+  data: {
+    labels: follower_count_on_day_int,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: follower_count_int
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "connection analytics"
+    },
+    scales: {
+    
+      yAxes: [{ticks: {min: minNumber, max:maxNumber}}],
+    }
+  }
+});
+
+
+let post_list_str = document.getElementById('post_list').value;
+let post_list_arr = post_list_str.split(','); 
+let post_list_int = post_list_arr.map(str => parseInt(str));
+post_list_int.splice(0, 1);
+console.log("nnnnnnnnnnnnnnn", post_list_int)
+
+let likes_list_str = document.getElementById('likes_list').value;
+let likes_list_arr = likes_list_str.split(','); 
+let likes_list_int = likes_list_arr.map(str => parseInt(str));
+likes_list_int.splice(0, 1);
+console.log("mmmmmmmmmmmmmmm", likes_list_int)
+
+
+new Chart("postAnalyticsLikeChart", {
+  type: "bar",
+  data: {
+    labels: post_list_int,
+    datasets: [{
+      backgroundColor: "rgb(133, 173, 185)",
+      data: likes_list_int
+    }]
+  },
+  options: {
+    legend: { display: false },
+    title: {
+      display: true,
+      text: "likes on posts"
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "posts"
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: "likes"
+        }
+      }
+    }
+  }
+});
+
+let post_list2_str = document.getElementById('post_list').value;
+let post_list2_arr = post_list2_str.split(','); 
+let post_list2_int = post_list2_arr.map(str => parseInt(str));
+post_list2_int.splice(0, 1);
+console.log("nnnnnnnnnnnnnnn", post_list2_int)
+
+let comments_list_str = document.getElementById('comments_list').value;
+let comments_list_arr = comments_list_str.split(','); 
+let comments_list_int = comments_list_arr.map(str => parseInt(str));
+comments_list_int.splice(0, 1);
+console.log("mmmmmmmmmmmmmmm", comments_list_int)
+new Chart("postAnalyticsCommentsChart", {
+  type: "bar",
+  data: {
+    labels: post_list2_int,
+    datasets: [{
+      backgroundColor: "rgb(133, 173, 185)",
+      data: comments_list_int
+    }]
+  },
+  options: {
+    legend: { display: false },
+    title: {
+      display: true,
+      text: "comments on posts"
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "posts"
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: "likes"
+        }
+      }
+    }
+  }
+});
+    function openNav() 
+    {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() 
+    {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    
+
+
+
+let visibletime;
+let hiddentime;
+let activeTime = 0;
+
+// Initialize visibletime when the page loads
+window.onload = function() {
+  let currentTimeMillis = Date.now();
+  visibletime = new Date(currentTimeMillis);
+  console.log("Initial Visible Time:", visibletime);
+};
+
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible') {
+    let currentTimeMillis = Date.now();
+    visibletime = new Date(currentTimeMillis);
+    console.log("Visible Time:", visibletime);
+
+    // Resume refresh or perform other actions when visible
+  } else if (document.visibilityState === 'hidden') {
+    let currentTimeMillis = Date.now();
+    hiddentime = new Date(currentTimeMillis);
+    console.log("Hidden Time:", hiddentime);
+
+    if (visibletime) {
+      let activeTime = hiddentime - visibletime;
+   
+      sendActiveTimeToServer(activeTime);
+      console.log("Active Time:", activeTime);
+    }
+
+  }
+});
+
+function sendActiveTimeToServer(activeTime) {
+  var ajax = new XMLHttpRequest();
+  ajax.open("POST", "{% url 'save_active_time' %}", true);
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  ajax.setRequestHeader("X-CSRFToken", getCookie('csrftoken')); // Include the CSRF token in the request headers
+  ajax.onreadystatechange = function() {
+    if (ajax.readyState === 4) {
+      if (ajax.status === 200) {
+        var response = JSON.parse(ajax.responseText);
+        if (response.success) {
+          console.log("Active time sent successfully.");
+        } else {
+          console.error("Error sending active time:", response.error);
+        }
+      } else {
+        console.error('Error sending active time:', ajax.statusText);
+      }
+    }
+  };
+  ajax.send("activeTime=" + activeTime);
+}
+
+// Function to get CSRF token from cookie
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+    </script>
+
+
+  </body> 
+</html>
+

@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose File Button</title>
+<style>
+
+    .file-input {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        cursor: pointer;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .file-input input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+    }
+
+    #fileName {
+        margin-top: 10px;
+    }
+
+</style>
+</head>
+<body>
+    <label for="fileInput" class="file-input">
+        Choose File
+        <input type="file" id="fileInput" name="fileInput" onchange="showFileName()">
+    </label>
+    <div id="fileName"></div>
+
+    <script>
+        function showFileName() {
+            const fileInput = document.getElementById('fileInput');
+            const fileNameDisplay = document.getElementById('fileName');
+            
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                fileNameDisplay.textContent = 'Selected File: ' + fileName;
+            } else {
+                fileNameDisplay.textContent = 'No file selected';
+            }
+        }
+    </script>
+
+</body>
+</html>

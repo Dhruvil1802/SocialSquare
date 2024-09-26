@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <style>
+
+        .form-container {
+            display: flex;
+            justify-content: flex-start;;
+        }
+        input[type=submit] {
+                     width: 16%;
+                     font-size: 14px;
+                     background-color: rgb(46, 101, 108); 
+                      border: none;
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                     
+                     
+                      }
+            input[type=submit]:hover {
+                         background-color:  rgb(104, 139, 151);
+            }
+            #nav{
+                background-color: rgb(46, 101, 108);
+            }
+            #accept_button:hover {
+                         background-color:rgb(46, 101, 108);
+            }
+            #accept_button {
+                     width: 100%;
+                     font-size: 14px;
+                     background-color: rgb(162, 192, 201); 
+                      border: none;
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      border-radius: 20px;
+                     
+                      }
+            #profile_button:hover {
+                         background-color:white;
+                         font-size: 14px;
+                         text-decoration: underline;
+            }
+            #profile_button {
+                     width: 100%;
+                     font-size: 14px;
+                     background-color: rgb(255, 255, 255); 
+                      border: none;
+                      color: rgb(0, 0, 0);
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                     
+                      }
+            #pendingrequest_table{
+                            display: flex;
+                            justify-content: center;
+
+        }
+        img {
+                transition:transform 0.25s ease;
+            }
+
+        img:hover {
+                    -webkit-transform:scale(7); /* or some other value */
+                    transform:scale(7);
+                    }
+                    .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav input[type=submit] {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  background-color: transparent;
+  text-align: left;
+  width:100%;
+}
+
+.sidenav input[type=submit]:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:#818181
+}
+
+.sidenav .closebtn:hover {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:white
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+  </head>
+  <body>
+    <div id = "nav">
+      <div class="form-container">
+        <form action="../../Posts/homepage/" method="get" style="width:80%;">
+          {% csrf_token %}
+          {% if currentpage == "homepage" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="HOME" formaction="../../Posts/homepage/">
+          {% else %}
+                <input type ="submit" value="HOME" formaction="../../Posts/homepage/">
+          {% endif %}
+          {% if currentpage == "showuserprofile" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+          {% else %}
+                <input type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+          {% endif %}
+          {% if currentpage == "createpost" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="POST" formaction="../../Posts/createpost/">
+          {% else %}
+                <input type ="submit" value="POST" formaction="../../Posts/createpost/">
+          {% endif %}
+          {% if currentpage == "suggestions" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+          {% else %}
+                <input type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+          {% endif %}
+          {% if currentpage == "pendingrequests" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+          {% else %}
+                <input type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+          {% endif %}
+          {% if currentpage == "notifications" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+          {% else %}
+                <input type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+          {% endif %}
+        </form>            
+          
+        <span style="font-size:25px;cursor:pointer;color:white; margin-top:9px; margin-left:250px;" onclick="openNav()">&#9776;</span>
+      </div>
+  </div>
+  
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<form action="../../Connections/blockeduser/" method="get">
+
+  {% csrf_token %} 
+  <input type="submit" value="EDIT PROFILE" formaction="../../UserProfile/updateprofile/" formmethod="get">
+  <input type ="submit" value="BLOCKED USERS" formaction="../../Connections/blockeduser/" formmethod="get">
+  <input type="submit" value="USER INSIGHTS" formaction="../../UserProfile/userinsights/" formmethod="get">
+  <input type="submit" value="RESET PASSWORD" formaction="../../Registration/resetpassword/" formmethod="get">
+  <input type ="submit" value="LOGOUT" formaction="../../Registration/logout/" formmethod="get">
+
+</form>
+</div>
+
+
+    <b><h1 style="font-size: 35px; font-weight: bolder; margin-left:610px; color:rgb(55, 133, 143) ;">Pending Requests</h1></b>
+    <div id="pendingrequest_table">
+    
+    <table>
+        {% for pr in pending_requests %}
+        <form action="../../Connections/acceptrequest/" method="post">
+        {% csrf_token %}
+        <tr>
+          <input type="hidden" name="requested_user_id" value="{{pr.user.user_id}}">
+          <th><img src="../../Media/{{pr.user.profile_pic}}" height="30px" width="30px" alt="profile_pic" style="border-radius: 30px;"/></th>
+          <th></th>
+          <th><input id="profile_button" type="submit" value="{{pr.user.username}}" formaction="../../UserProfile/showuserprofile/" formmethod="get">{% if pr.user.is_verified %}<span style="color: rgb(46, 101, 108);">&#x2713;</span>{% endif %}</th>
+          <th></th>
+          <th><input id="accept_button" type="submit" value="Accept"></th>
+        </tr>
+       </form>
+        {% endfor %}
+      </table>
+
+
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+        
+
+        let visibletime;
+let hiddentime;
+let activeTime = 0;
+
+// Initialize visibletime when the page loads
+window.onload = function() {
+  let currentTimeMillis = Date.now();
+  visibletime = new Date(currentTimeMillis);
+  console.log("Initial Visible Time:", visibletime);
+};
+
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible') {
+    let currentTimeMillis = Date.now();
+    visibletime = new Date(currentTimeMillis);
+    console.log("Visible Time:", visibletime);
+
+    // Resume refresh or perform other actions when visible
+  } else if (document.visibilityState === 'hidden') {
+    let currentTimeMillis = Date.now();
+    hiddentime = new Date(currentTimeMillis);
+    console.log("Hidden Time:", hiddentime);
+
+    if (visibletime) {
+      let activeTime = hiddentime - visibletime;
+   
+      sendActiveTimeToServer(activeTime);
+      console.log("Active Time:", activeTime);
+    }
+
+  }
+});
+
+function sendActiveTimeToServer(activeTime) {
+  var ajax = new XMLHttpRequest();
+  ajax.open("POST", "{% url 'save_active_time' %}", true);
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  ajax.setRequestHeader("X-CSRFToken", getCookie('csrftoken')); // Include the CSRF token in the request headers
+  ajax.onreadystatechange = function() {
+    if (ajax.readyState === 4) {
+      if (ajax.status === 200) {
+        var response = JSON.parse(ajax.responseText);
+        if (response.success) {
+          console.log("Active time sent successfully.");
+        } else {
+          console.error("Error sending active time:", response.error);
+        }
+      } else {
+        console.error('Error sending active time:', ajax.statusText);
+      }
+    }
+  };
+  ajax.send("activeTime=" + activeTime);
+}
+
+// Function to get CSRF token from cookie
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+        </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+  </head>
+<style>
+            #forgot_password_div{
+                    background-color: rgb(123, 172, 179); 
+                    height: 30rem; 
+                    width: 40rem;
+                    border-radius: 2rem; 
+                    text-align: center;
+                    align-self: center;
+                    margin-top: 5rem;
+                    margin-left: 27rem;
+                    font-family: Georgia, 'Times New Roman', Times, serif; 
+        }
+
+            #submit {
+                     width: 30%;
+                     font-size: 14px;
+                     background-color: rgb(46, 101, 108); 
+                      border: none;
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      border-radius:4px;
+                     
+                      }
+            #submit:hover {
+                         background-color:  rgb(104, 139, 151);
+                                  
+                      }
+            input[type=text]{
+                        width: 30%;
+                        height: 30%;
+                        box-sizing: border-box;
+                        border: 4px solid #ccc;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        background-color: white;
+                        background-position: 10px 10px; 
+                        background-repeat: no-repeat;
+                        padding: 12px 20px 12px 40px;
+                        transition: width 0.4s ease-in-out;
+                    }     
+            input[type=text]:hover {
+                     background-color: rgb(193, 212, 218);
+                     width: 100%;
+                      }
+
+
+</style>
+  <body>
+
+    <div id="forgot_password_div">
+    <form action="../../Registration/editpassword/" method="otp">
+        {% csrf_token %}
+        <br><br><br><br><br>
+        <b>OTP<b><br><br><br><input type = 'text' name="otp"><br><br><br><br>
+        <input id="submit" type ="submit" value="submit">
+    </form>
+    </div>
+
+  </body>
+</html>

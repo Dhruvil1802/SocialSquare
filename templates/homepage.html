@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+<style>
+
+        .form-container {
+            display: flex;
+            justify-content: flex-start;;
+        }
+        input[type=submit] {
+                     width: 16%;
+                     font-size: 14px;
+                     background-color: rgb(46, 101, 108); 
+                      border: none;
+                      color: white;
+                      padding: 16px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      margin: 4px 2px;
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                     
+                     
+                      }
+            input[type=submit]:hover {
+                         background-color:  rgb(104, 139, 151);
+            }
+            #nav{
+                background-color: rgb(46, 101, 108);
+                position: fixed;
+                width: 100%;
+                margin-top: 0px;
+            }
+            .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav input[type=submit] {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  background-color: transparent;
+  text-align: left;
+  width:100%;
+}
+
+.sidenav input[type=submit]:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:#818181
+}
+
+.sidenav .closebtn:hover {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color:white
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.heart-button {
+  height:30px;
+  width:30px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  content: "\2665";
+  display: inline-block;
+}
+.heart-button::before {
+  height:30px;
+  width:30px;
+  content: '\2665'; /* Unicode character for heart symbol */
+}
+#profile_button:hover {
+                         background-color:white;
+                         font-size: 19px;
+                         text-decoration: underline;
+            }
+            #profile_button {
+                      width:auto;
+                      font-size: 18px;
+                      background-color: rgb(255, 255, 255); 
+                      border:none;
+                      color: rgb(0, 0, 0);
+                      padding: 16px 32px;
+                      text-decoration: none;
+                      
+                      transition-duration: 0.4s;
+                      cursor: pointer; 
+                      }
+
+
+                      .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 1000px;
+}
+
+/* Caption of Modal Image */
+#bio {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #161515;
+  padding: 10px 0;
+  height: 150px;
+  white-space: pre-wrap;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+</style>
+  </head>
+  <body style="background-color: rgb(225, 233, 236)">
+
+    <div id = "nav">
+      <div class="form-container">
+        <form action="../../Posts/homepage/" method="get" style="width:80%;">
+          {% csrf_token %}
+          {% if currentpage == "homepage" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="HOME" formaction="../../Posts/homepage/">
+          {% else %}
+                <input type ="submit" value="HOME" formaction="../../Posts/homepage/">
+          {% endif %}
+          {% if currentpage == "showuserprofile" %}  
+                  <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+          {% else %}
+                <input type ="submit" value="PROFILE" formaction="../../UserProfile/showuserprofile/">
+          {% endif %}
+          {% if currentpage == "createpost" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="POST" formaction="../../Posts/createpost/">
+          {% else %}
+                <input type ="submit" value="POST" formaction="../../Posts/createpost/">
+          {% endif %}
+          {% if currentpage == "suggestions" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+          {% else %}
+                <input type ="submit" value="SUGGESTIONS" formaction="../../Connections/suggestions/">
+          {% endif %}
+          {% if currentpage == "pendingrequests" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+          {% else %}
+                <input type ="submit" value="PENDING REQUESTS" formaction="../../Connections/pendingrequests/">
+          {% endif %}
+          {% if currentpage == "notifications" %}  
+                <input style="background-color: rgb(104, 139, 151);" type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+          {% else %}
+                <input type ="submit" value="NOTIFICATION" formaction="../../UserProfile/notification/">
+          {% endif %}
+        </form>            
+          
+        <span style="font-size:25px;cursor:pointer;color:white; margin-top:9px; margin-left:250px;" onclick="openNav()">&#9776;</span>
+      </div>
+  </div>
+  
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+<form action="../../Connections/blockeduser/" method="get">
+
+  {% csrf_token %} 
+  <input type="submit" value="EDIT PROFILE" formaction="../../UserProfile/updateprofile/" formmethod="get">
+  <input type ="submit" value="BLOCKED USERS" formaction="../../Connections/blockeduser/" formmethod="get">
+  <input type="submit" value="USER INSIGHTS" formaction="../../UserProfile/userinsights/" formmethod="get">
+  <input type="submit" value="RESET PASSWORD" formaction="../../Registration/resetpassword/" formmethod="get">
+  <input type ="submit" value="LOGOUT" formaction="../../Registration/logout/" formmethod="get">
+
+</form>
+</div>
+
+
+
+<div style="border: 1px solid rgb(225, 233, 236); overflow:visible; background-color: rgb(255, 255, 255); margin-left: 400px; margin-right: 400px; margin-top: 0px;">
+    <br><br> 
+  {% for i in requested_user_post %}
+      
+      <div id="post_pic" style="margin-left: 140px; margin-top: 70px;" >
+      <div style="width:421px;" id="username_and_profilepic">
+      <form action='../../UserProfile/showuserprofile/' method="get">
+        {% csrf_token %}
+      <input type="hidden" name="requested_user_id" value="{{i.user.user_id}}">
+      <img src="../../Media/{{i.user.profile_pic}}" height="35px" width="35px" alt="profile_pic" style="border-radius: 18px;"/>
+      <input id="profile_button" style="padding-left: 5px;" type="submit" value="{{i.user.username}}" formaction="../../UserProfile/showuserprofile/" formmethod="get">{% if i.user.is_verified %}<span style="color: rgb(46, 101, 108);">&#x2713;</span>{% endif %}
+      </form>
+      
+      </div>
+      <img src="../../Media/{{i.post_pic}}" height="421px" width="421px" alt="post"  onclick="fun1(this)"/><br>
+        <!-- {{i.post_pic|slice:"-4:"}}
+        {% if i.post_pic|slice:"-4:" == '.mp4' %}
+            <video controls  height="421px" width="421px">
+              <source src="../../Media/{{ i.post_pic }}" type="video/mp4">
+              Your browser does not support the video tag or the video format.
+            </video>
+        {% else %}
+              <img src="../../Media/{{i.post_pic}}" height="421px" width="421px" alt="post"  onclick="fun1(this)"/>
+        {% endif %}<br> -->
+      <div id="myModal" class="modal">
+                <span class="close">&times;</span>  
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+      </div>
+      
+        
+      <div >
+      {% if i.post_id in liked_post %}
+        <button style="background-color: red; color:white" class="heart-button" onclick="like(this, '{{ i.post_id }}', '{{ user.user_id}}')"></button>
+      {% else %}
+      <button style="background-color: white; color:rgb(218, 229, 232)" class="heart-button" onclick="like(this, '{{ i.post_id }}', '{{ user.user_id}}')"></button>
+      {% endif %}
+      
+      <form method="get" action="../../viewpost/" style="display:inline-block; ">
+        {% csrf_token %}
+        <input type="hidden" name="post_id" value="{{i.post_id}}">
+      <button class="comment-button"  style="height:30px; width:30px; border:none; background-color:rgb(218, 229, 232); padding-top: 6px;" formaction="../../Posts/viewpost/" formmethod="get">&#128172;</button>
+      </form>
+      </div>
+
+        <input type="text" id="{{ i.post_id }}" name="likes" value="{{i.like_count}} likes" style="width:auto; border:none; color: #818181; display: inline;"> 
+
+      <br>
+      <div style="border-bottom: 1px solid rgb(190, 222, 225); width: 425px">{{i.caption}}<br><br></div>
+      <br><br><br>
+      </div>
+      {% endfor %}
+        
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+        
+       
+        function fun1(t)
+        {
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            t.onclick = function()
+            {
+                console.log('t one');
+                modal.style.display = "block";
+                console.log('t two');
+                modalImg.src = this.src;
+                console.log('t three');
+                captionText.innerHTML = this.alt;
+                console.log('t four');
+            }
+        }	
+        
+        var span = document.getElementsByClassName("close")[0];
+        
+        
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
+
+    function openNav() 
+    {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() 
+    {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    
+    function like(button, post_id, follower) {
+
+        var currentColor = button.style.backgroundColor.trim().toLowerCase(); 
+        var newColor = currentColor === 'red' ? 'white' : 'red'; 
+
+        button.style.backgroundColor = newColor; 
+
+        var cc= button.style.color.trim().toLowerCase();
+        var nc = cc === 'white' ? 'rgb(218, 229, 232)' : 'white'; 
+
+        button.style.color = nc;
+
+        var ajax = new XMLHttpRequest();
+
+
+
+        ajax.open("POST", "{% url 'like_post' %}", true);
+        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajax.setRequestHeader("X-CSRFToken", getCookie('csrftoken')); // Include the CSRF token in the request headers
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState === 4) {
+                if (ajax.status === 200) {
+                    var response = JSON.parse(ajax.responseText);
+                    if (response.success) {
+                        console.log("Color updated successfully in the database.");
+                        var post_like_count = response.post_like_count;
+                        document.getElementById(post_id).value = post_like_count + " likes"
+                        console.log("post_like_count", post_like_count);
+                    } else {
+                        console.error("Error liking post:", response.error);
+                    }
+                } 
+                else 
+                {
+                    console.error("Error liking post: Server returned status code", ajax.status);
+                }
+            }
+        };
+        ajax.send("post_id=" + post_id + "&follower=" + follower + "&color=" + newColor);
+    }
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    let visibletime;
+let hiddentime;
+let activeTime = 0;
+
+// Initialize visibletime when the page loads
+window.onload = function() {
+  let currentTimeMillis = Date.now();
+  visibletime = new Date(currentTimeMillis);
+  console.log("Initial Visible Time:", visibletime);
+};
+
+document.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'visible') {
+    let currentTimeMillis = Date.now();
+    visibletime = new Date(currentTimeMillis);
+    console.log("Visible Time:", visibletime);
+
+    // Resume refresh or perform other actions when visible
+  } else if (document.visibilityState === 'hidden') {
+    let currentTimeMillis = Date.now();
+    hiddentime = new Date(currentTimeMillis);
+    console.log("Hidden Time:", hiddentime);
+
+    if (visibletime) {
+      let activeTime = hiddentime - visibletime;
+   
+      sendActiveTimeToServer(activeTime);
+      console.log("Active Time:", activeTime);
+    }
+
+  
+  }
+});
+
+function sendActiveTimeToServer(activeTime) {
+  var ajax = new XMLHttpRequest();
+  ajax.open("POST", "{% url 'save_active_time' %}", true);
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  ajax.setRequestHeader("X-CSRFToken", getCookie('csrftoken')); // Include the CSRF token in the request headers
+  ajax.onreadystatechange = function() {
+    if (ajax.readyState === 4) {
+      if (ajax.status === 200) {
+        var response = JSON.parse(ajax.responseText);
+        if (response.success) {
+          console.log("Active time sent successfully.");
+        } else {
+          console.error("Error sending active time:", response.error);
+        }
+      } else {
+        console.error('Error sending active time:', ajax.statusText);
+      }
+    }
+  };
+  ajax.send("activeTime=" + activeTime);
+}
+
+// Function to get CSRF token from cookie
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+
+    </script>
+
+
+  </body> 
+</html>
+
